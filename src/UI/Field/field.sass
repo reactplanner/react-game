@@ -1,0 +1,97 @@
+*
+    box-sizing: border-box
+
+.play
+    &-wrapper
+        position: relative
+        background: #bbada0
+        border-radius: 6px
+        margin-top: 40px
+        padding: 6px
+        width: 500px
+        height: 500px
+        margin: 100px auto 0
+    &-cells
+        height: 100%
+    &-tiles-bg
+        margin-bottom: 17px
+        font-family: 'Karla', sans-serif
+        text-align: center
+        font-size: 55px
+        font-weight: 700
+        border-radius: 3px
+        display: inline-flex
+        justify-content: center
+        align-items: center
+        width: 22%
+        height: 22%
+        background-color: rgba(238,228,218,.35)
+    &-cell
+        margin-bottom: 17px
+        font-family: 'Karla', sans-serif
+        text-align: center
+        font-size: 55px
+        font-weight: 700
+        border-radius: 3px
+        display: inline-flex
+        justify-content: center
+        align-items: center
+        width: 22%
+        height: 22%
+        background-color: rgba(238,228,218,.35)
+        position: absolute
+        transition: 1s all ease
+        &-0
+            background-color: rgba(238,228,218,.35)
+            color: transparent
+        &-2
+            background-color: #eee4da
+        &-4
+            background-color: #eee1c9
+        &-8
+            color: #f9f6f2
+            background-color: #f3b27a
+        &-16
+            color: #f9f6f2
+            background-color: #f69664
+        &-32
+            color: #f9f6f2
+            background-color: #f77c5f
+        &-64
+            color: #f9f6f2
+            background-color: #f75f3b
+        &-128
+            color: #f9f6f2
+            background-color: #edd073
+            font-size: 45px
+        &-256
+            color: #f9f6f2
+            background-color: #edcc62
+            font-size: 45px
+        &-512
+            color: #f9f6f2
+            background-color: #edc950
+            font-size: 45px
+        &-1024
+            color: #f9f6f2
+            background-color: #edc53f
+            font-size: 35px
+        &-2048
+            color: #f9f6f2
+            background-color: #edc22e
+            font-size: 35px
+
+    &-row
+        height: 100%
+        width: 100%
+        justify-content: space-between
+        display: flex
+        flex-wrap: wrap
+        padding: 6px
+    &-background
+        height: 100%
+        width: 100%
+        justify-content: space-between
+        display: flex
+        flex-wrap: wrap
+        padding: 6px
