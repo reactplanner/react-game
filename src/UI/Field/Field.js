@@ -24,6 +24,7 @@ const empty = [
 ];
 
 const Field = (props) => {
+	console.log(props.cells, ' VUZOV');
 	return (
 		<div className='play-wrapper'>
 			<div className='play-cells'>
