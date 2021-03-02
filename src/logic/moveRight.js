@@ -1,5 +1,6 @@
 import chooseRow from './chooseRow';
-
+let score = 0;
+console.log(score, 'score');
 const moveRight = async (array) => {
 	console.log('right');
 	let one = chooseRow(array, 0);
@@ -7,7 +8,8 @@ const moveRight = async (array) => {
 	let three = chooseRow(array, 2);
 	let four = chooseRow(array, 3);
 	let global = [].concat(filteredToRight(one), filteredToRight(two), filteredToRight(three), filteredToRight(four));
-	return await global;
+	console.log(score, 'score in');
+	return await { array: global, score };
 };
 
 const filteredToRight = (array) => {
@@ -38,6 +40,8 @@ const filteredToRight = (array) => {
 		if (element.value == next.value) {
 			next.value = (element.value * 2).toString();
 			element.value = '0';
+			score += +next.value;
+
 			for (let j = i; j > 0; j--) {
 				const element = arrayZ[j];
 				let prev = arrayZ[j - 1];
