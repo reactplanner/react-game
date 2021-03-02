@@ -28,6 +28,9 @@ const filteredToRight = (array) => {
 				element.value = prev.value;
 				prev.value = temp;
 			}
+			if (element.value == next.value) {
+				continue;
+			}
 		}
 		if (element.value < next.value) {
 			continue;

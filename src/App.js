@@ -30,7 +30,7 @@ function App() {
 	const [ score, setScore ] = useState(0);
 	const [ draw, setDraw ] = useState(false);
 	const [ cells, setCells ] = useState([
-		{ id: 1, x: 0, y: 0, value: '0' },
+		{ id: 1, x: 0, y: 0, value: '16' },
 		{ id: 2, x: 0, y: 1, value: '0' },
 		{ id: 3, x: 0, y: 2, value: '0' },
 		{ id: 4, x: 0, y: 3, value: '0' },
@@ -42,7 +42,7 @@ function App() {
 		{ id: 10, x: 2, y: 1, value: '0' },
 		{ id: 11, x: 2, y: 2, value: '0' },
 		{ id: 12, x: 2, y: 3, value: '0' },
-		{ id: 13, x: 3, y: 0, value: '8' },
+		{ id: 13, x: 3, y: 0, value: '0' },
 		{ id: 14, x: 3, y: 1, value: '0' },
 		{ id: 15, x: 3, y: 2, value: '0' },
 		{ id: 16, x: 3, y: 3, value: '0' }
