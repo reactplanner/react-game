@@ -8,6 +8,7 @@ import moveUp from './logic/moveUp';
 import randommizer from './logic/randommizer';
 import Header from './components/Header/Header';
 import Help from './components/Help/Help';
+import Social from './components/Social/Social';
 import Arrow from './UI/Arrow/Arrow';
 import { Empty } from './logic/empty';
 import { cellReducerAction } from './reducer/cellReducer';
@@ -97,6 +98,7 @@ function App() {
 				<Field cells={cells} reroll={endgame ? true : false} />
 				<Arrow arrow={arrow} />
 			</div>
+			<Social />
 		</div>
 	);
 }
