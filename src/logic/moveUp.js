@@ -1,6 +1,5 @@
 const moveUp = async (array) => {
-	console.log(array, 'array to down');
-	console.log('PZDZ');
+	let score = 0;
 	let temp = [];
 	let one = [],
 		two = [],
@@ -25,10 +24,6 @@ const moveUp = async (array) => {
 				break;
 		}
 	}
-	// 2 0 4 8
-	// 2 4 0 8
-
-	// 0 1 2 3 - index
 	function recall(array) {
 		for (let i = array.length - 1; i > 0; i--) {
 			const element = array[i];
@@ -36,6 +31,7 @@ const moveUp = async (array) => {
 			if (element.value == prev.value) {
 				prev.value = (prev.value * 2).toString();
 				element.value = '0';
+				score += +prev.value;
 				for (let j = i; j < array.length - 1; j++) {
 					const element = array[j];
 					let next = array[j + 1];
@@ -78,7 +74,7 @@ const moveUp = async (array) => {
 	let global = temp;
 	//.concat(filteredToRight(one), filteredToRight(two), filteredToRight(three), filteredToRight(four));
 
-	return await global;
+	return await { array: global, score };
 };
 
 export default moveUp;

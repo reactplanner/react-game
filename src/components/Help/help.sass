@@ -1,0 +1,42 @@
+.help
+    &-hide
+        height: 200px
+        position: absolute
+        left: 10%
+        top: 20px
+    &-q
+        button
+            font-size: 30px
+            border: 2px solid grey
+            height: 40px
+            width: 40px
+            cursor: pointer
+    &-show
+        position: absolute
+        width: 0
+        left: 0
+        top: 0
+        height: 100%
+        z-index: 1000
+        &__active
+            width: 50vw
+            background: #eee4dad6
+            transition: 0.3s all ease
+    &-close
+        cursor: pointer
+        position: absolute
+        right: 30px
+        top: 30px
+        img
+            height: 40px
+            width: 40px
+    &-text
+        padding: 20px
+        font-size: 20px
+        text-align: left
+        p
+            text-align: left
+    &-key
+        text-align: center
+        img
+            width: 300px
