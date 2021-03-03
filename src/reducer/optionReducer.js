@@ -9,7 +9,6 @@ const initialState = {
 export const optionReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case SET_SCORE:
-			console.log(action.payload, 'action.payload');
 			if (action.payload !== 0) {
 				return { ...state, score: state.score + action.payload };
 			} else {

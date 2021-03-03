@@ -3,14 +3,9 @@ import Row from '../Row/Row';
 import Cell from '../Cell/Cell';
 import CellEmpty from '../CellEmpty/CellEmpty';
 import './field.sass';
-import { cellReducerAction, changedStartReducer } from '../../reducer/cellReducer';
-import { setStartAction } from '../../reducer/optionReducer';
-import { useDispatch } from 'react-redux';
 import { Empty } from '../../logic/empty';
-import randommizer from '../../logic/randommizer';
 
 const Field = (props) => {
-	const dispatch = useDispatch();
 	return (
 		<div className='play-wrapper'>
 			<div className='play-cells'>

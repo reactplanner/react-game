@@ -1,5 +1,4 @@
 const moveDown = async (array) => {
-	console.log(' moveDown ~ array', array);
 	let score = 0;
 	let temp = [];
 	let one = [],
@@ -30,12 +29,12 @@ const moveDown = async (array) => {
 		for (let i = 0; i < array.length - 1; i++) {
 			const element = array[i];
 			let next = array[i + 1];
-			if (next.value == '0') {
+			if (next.value === '0') {
 				temp = element.value;
 				next.value = temp;
 				element.value = '0';
 			}
-			if (element.value == '0') {
+			if (element.value === '0') {
 				for (let j = i; j > 0; j--) {
 					const element = array[j];
 					let prev = array[j - 1];
@@ -45,12 +44,12 @@ const moveDown = async (array) => {
 						prev.value = temp;
 					}
 				}
-				if (element.value == next.value) {
+				if (element.value === next.value) {
 					continue;
 				}
 			}
 
-			if (element.value == next.value) {
+			if (element.value === next.value) {
 				next.value = (next.value * 2).toString();
 				element.value = '0';
 				score += +next.value;

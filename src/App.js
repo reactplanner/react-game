@@ -11,14 +11,13 @@ import Help from './components/Help/Help';
 import Social from './components/Social/Social';
 import Arrow from './UI/Arrow/Arrow';
 import { Empty } from './logic/empty';
-import { cellReducerAction, changedStartReducer } from './reducer/cellReducer';
+import { cellReducerAction } from './reducer/cellReducer';
 import { setScoreAction, setStartAction, setArrowAction } from './reducer/optionReducer';
 import './App.sass';
 
 function App() {
 	const dispatch = useDispatch();
 	const cells = useSelector((state) => state.cell.cells);
-	console.log('🚀 ~ file: App.js ~ line 21 ~ App ~ cells', cells);
 	const score = useSelector((state) => state.option.score);
 	const endgame = useSelector((state) => state.option.endgame);
 	const arrow = useSelector((state) => state.option.arrow);
@@ -27,14 +26,12 @@ function App() {
 	const setEmptyCells = async () => {
 		setNow(true);
 		let random = await randommizer(Empty, false);
-		console.log('setEmptyCells ~ random', random);
 		dispatch(cellReducerAction(random));
 		dispatch(setStartAction(false));
 		setNow(false);
 	};
 	useEffect(
 		() => {
-			console.log(cells, 'useEffgect cellls');
 			const onKeyLeft = async ({ key }) => {
 				if (key === 'ArrowLeft') {
 					let res = await moveLeft(cells);

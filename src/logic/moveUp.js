@@ -68,11 +68,7 @@ const moveUp = async (array) => {
 	temp = [].concat(recall(one), recall(two), recall(three), recall(four)).sort((a, b) => {
 		return a.id > b.id ? 1 : -1;
 	});
-
-	console.log(temp, 'temp');
-
 	let global = temp;
-	//.concat(filteredToRight(one), filteredToRight(two), filteredToRight(three), filteredToRight(four));
 
 	return await { array: global, score };
 };

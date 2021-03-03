@@ -6,7 +6,6 @@ const moveRight = async (array) => {
 	let three = chooseRow(array, 2);
 	let four = chooseRow(array, 3);
 	let global = [].concat(filteredToRight(one), filteredToRight(two), filteredToRight(three), filteredToRight(four));
-	console.log(score, 'right score');
 
 	function filteredToRight(array) {
 		let arrayZ = array;
