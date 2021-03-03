@@ -44,6 +44,7 @@
         &-0
             background-color: rgba(238,228,218,.35)
             color: transparent
+            transition: none !important
         &-2
             background-color: #eee4da
         &-4
@@ -120,3 +121,16 @@
             &:hover
                 background: white
                 color: black
+
+@media screen and ( max-width: 700px )
+    .play
+        &-wrapper
+            width: 360px
+            height: 360px
+            padding: 0
+        &-cell
+            font-size: 40px
+            &-1024
+                font-size: 26px
+            &-2048
+                font-size: 26px
