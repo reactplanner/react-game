@@ -1,4 +1,5 @@
 const moveDown = async (array) => {
+	console.log(' moveDown ~ array', array);
 	let score = 0;
 	let temp = [];
 	let one = [],

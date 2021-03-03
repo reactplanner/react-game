@@ -16,7 +16,7 @@
 { id: 14, x: 3, y: 2, value: '0' },
 { id: 15, x: 3, y: 3, value: '0' }
 */
-import { SET_CELLS, TURN_RIGHT, TURN_LEFT, TURN_UP, TURN_DOWN } from './types';
+import { SET_CELLS, SET_EMPTY, TURN_RIGHT, TURN_LEFT, TURN_UP, TURN_DOWN } from './types';
 
 const initialState = {
 	cells: [
@@ -36,14 +36,16 @@ const initialState = {
 		{ id: 14, x: 3, y: 1, value: '0' },
 		{ id: 15, x: 3, y: 2, value: '0' },
 		{ id: 16, x: 3, y: 3, value: '0' }
-	]
+	],
+	changed: false
 };
 
 export const cellReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case SET_CELLS:
-			return { ...state, cells: action.payload };
-
+			return { ...state, cells: action.payload, changed: false };
+		case SET_EMPTY:
+			return { ...state, cells: action.payload, changed: true };
 		default:
 			break;
 	}
@@ -51,3 +53,4 @@ export const cellReducer = (state = initialState, action) => {
 };
 
 export const cellReducerAction = (payload) => ({ type: SET_CELLS, payload: payload });
+export const changedStartReducer = (payload) => ({ type: SET_EMPTY, payload: payload });

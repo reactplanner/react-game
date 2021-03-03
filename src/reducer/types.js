@@ -1,4 +1,5 @@
 export const SET_CELLS = 'SET_CELLS';
+export const SET_EMPTY = 'SET_EMPTY';
 export const TURN_RIGHT = 'TURN_RIGHT';
 export const TURN_LEFT = 'TURN_LEFT';
 export const TURN_UP = 'TURN_UP';
