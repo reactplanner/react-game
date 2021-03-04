@@ -6,7 +6,7 @@ const Social = () => {
 	return (
 		<div className='social'>
 			<h4>
-				Игра: <b>2048</b>, <br /> Дата: 2021/02/03
+				Игра: <b>2048</b> / Дата: 2021/02/03
 			</h4>
 			<ul>
 				<li>

@@ -1,16 +1,7 @@
-import Field from './UI/Field/Field';
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import moveLeft from './logic/moveLeft';
-import { moveRight } from './logic/moveRight';
-import moveDown from './logic/moveDown';
-import moveUp from './logic/moveUp';
-import randommizer from './logic/randommizer';
-import Header from './components/Header/Header';
-import Help from './components/Help/Help';
-import Social from './components/Social/Social';
-import Arrow from './UI/Arrow/Arrow';
-import { Empty } from './logic/empty';
+import * as FROM from './Imports.js';
+import Swipe from 'react-easy-swipe';
 import { cellReducerAction } from './reducer/cellReducer';
 import { setScoreAction, setStartAction, setArrowAction } from './reducer/optionReducer';
 import './App.sass';
@@ -25,16 +16,28 @@ function App() {
 	const [ now, setNow ] = useState(false);
 	const setEmptyCells = async () => {
 		setNow(true);
-		let random = await randommizer(Empty, false);
+		let random = await FROM.randommizer(FROM.Empty, false);
 		dispatch(cellReducerAction(random));
 		dispatch(setStartAction(false));
 		setNow(false);
 	};
+
+	let random = async (boolen) => {
+		let random = await FROM.randommizer(cells, boolen);
+		if (random === false) {
+			dispatch(setStartAction(true));
+			dispatch(cellReducerAction(FROM.Empty));
+		} else {
+			dispatch(cellReducerAction(random));
+			setDraw(true);
+		}
+	};
+
 	useEffect(
 		() => {
 			const onKeyLeft = async ({ key }) => {
 				if (key === 'ArrowLeft') {
-					let res = await moveLeft(cells);
+					let res = await FROM.moveLeft(cells);
 					dispatch(cellReducerAction(res['array']));
 					dispatch(setScoreAction(res['score']));
 					dispatch(setArrowAction('left'));
@@ -43,7 +46,7 @@ function App() {
 			};
 			const onKeyRight = async ({ key }) => {
 				if (key === 'ArrowRight') {
-					let res = await moveRight(cells);
+					let res = await FROM.moveRight(cells);
 					dispatch(cellReducerAction(res['array']));
 					dispatch(setScoreAction(res['score']));
 					dispatch(setArrowAction('right'));
@@ -53,7 +56,7 @@ function App() {
 
 			const onKeyDown = async ({ key }) => {
 				if (key === 'ArrowDown') {
-					let res = await moveDown(cells);
+					let res = await FROM.moveDown(cells);
 					dispatch(cellReducerAction(res['array']));
 					dispatch(setScoreAction(res['score']));
 					dispatch(setArrowAction('down'));
@@ -63,7 +66,7 @@ function App() {
 
 			const onKeyUp = async ({ key }) => {
 				if (key === 'ArrowUp') {
-					let res = await moveUp(cells);
+					let res = await FROM.moveUp(cells);
 					dispatch(cellReducerAction(res['array']));
 					dispatch(setScoreAction(res['score']));
 					dispatch(setArrowAction('up'));
@@ -76,16 +79,6 @@ function App() {
 			document.addEventListener('keydown', onKeyLeft);
 			document.addEventListener('keydown', onKeyRight);
 
-			let random = async (boolen) => {
-				let random = await randommizer(cells, boolen);
-				if (random === false) {
-					dispatch(setStartAction(true));
-					dispatch(cellReducerAction(Empty));
-				} else {
-					dispatch(cellReducerAction(random));
-					setDraw(true);
-				}
-			};
 			random(true);
 
 			return () => {
@@ -100,13 +93,51 @@ function App() {
 
 	return (
 		<div>
-			<Help />
+			<FROM.Help />
 			<div className='App'>
-				<Header score={score} />
-				<Field cells={cells} onGo={setEmptyCells} reroll={endgame ? true : false} />
-				<Arrow arrow={arrow} />
+				<FROM.Header score={score} />
+
+				<Swipe
+					onSwipeLeft={async () => {
+						console.log('onSwipeLeft');
+						let res = await FROM.moveLeft(cells);
+						dispatch(cellReducerAction(res['array']));
+						dispatch(setScoreAction(res['score']));
+						dispatch(setArrowAction('left'));
+						random(false);
+					}}
+					onSwipeRight={async () => {
+						console.log('onSwipeRight');
+						let res = await FROM.moveRight(cells);
+						dispatch(cellReducerAction(res['array']));
+						dispatch(setScoreAction(res['score']));
+						dispatch(setArrowAction('right'));
+						random(false);
+					}}
+					onSwipeDown={async () => {
+						console.log('onSwipeDown');
+						let res = await FROM.moveDown(cells);
+						dispatch(cellReducerAction(res['array']));
+						dispatch(setScoreAction(res['score']));
+						dispatch(setArrowAction('down'));
+						random(false);
+					}}
+					onSwipeUp={async () => {
+						console.log('onSwipeUp');
+						let res = await FROM.moveUp(cells);
+						dispatch(cellReducerAction(res['array']));
+						dispatch(setScoreAction(res['score']));
+						dispatch(setArrowAction('up'));
+						random(false);
+					}}
+					tolerance={100}
+				>
+					<FROM.Field cells={cells} onGo={setEmptyCells} reroll={endgame ? true : false} />
+				</Swipe>
+
+				<FROM.Arrow arrow={arrow} />
 			</div>
-			<Social />
+			<FROM.Social />
 		</div>
 	);
 }
