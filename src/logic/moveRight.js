@@ -9,7 +9,7 @@ const moveRight = async (array) => {
 
 	function filteredToRight(array) {
 		let arrayZ = array;
-
+		let connection = false;
 		for (let i = 0; i < arrayZ.length - 1; i++) {
 			const element = arrayZ[i];
 			let next = arrayZ[i + 1];
@@ -38,18 +38,20 @@ const moveRight = async (array) => {
 					element.value = prev.value;
 					prev.value = temp;
 				}
-				if (element.value == next.value) {
-					continue;
-				}
 			}
 			if (element.value < next.value) {
 				continue;
 			}
 			if (element.value == next.value) {
+				if (connection) {
+					continue;
+				}
 				next.value = (element.value * 2).toString();
 				element.value = '0';
 				score += +next.value;
-
+				if (next.value > 0) {
+					connection = true;
+				}
 				for (let j = i; j > 0; j--) {
 					const element = arrayZ[j];
 					let prev = arrayZ[j - 1];
@@ -57,7 +59,6 @@ const moveRight = async (array) => {
 					element.value = prev.value;
 					prev.value = temp;
 				}
-				i++;
 			}
 		}
 		return arrayZ;

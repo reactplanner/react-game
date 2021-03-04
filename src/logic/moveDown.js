@@ -1,5 +1,6 @@
 const moveDown = async (array) => {
 	let score = 0;
+
 	let temp = [];
 	let one = [],
 		two = [],
@@ -26,6 +27,7 @@ const moveDown = async (array) => {
 	}
 
 	function recall(array) {
+		let connection = false;
 		for (let i = 0; i < array.length - 1; i++) {
 			const element = array[i];
 			let next = array[i + 1];
@@ -50,9 +52,13 @@ const moveDown = async (array) => {
 			}
 
 			if (element.value === next.value) {
+				if (connection) {
+					continue;
+				}
 				next.value = (next.value * 2).toString();
 				element.value = '0';
 				score += +next.value;
+
 				for (let j = i; j > 0; j--) {
 					const element = array[j];
 					let prev = array[j - 1];
@@ -61,6 +67,9 @@ const moveDown = async (array) => {
 						element.value = prev.value;
 						prev.value = temp;
 					}
+				}
+				if (next.value > 0) {
+					connection = true;
 				}
 			}
 			if (element.value > next.value) {
