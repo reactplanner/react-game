@@ -23,14 +23,14 @@ function App() {
 	};
 
 	let random = async (boolen) => {
-		// let random = await FROM.randommizer(cells, boolen);
-		// if (random === false) {
-		// 	dispatch(setStartAction(true));
-		// 	dispatch(cellReducerAction(FROM.Empty));
-		// } else {
-		// 	dispatch(cellReducerAction(random));
-		// 	setDraw(true);
-		// }
+		let random = await FROM.randommizer(cells, boolen);
+		if (random === false) {
+			dispatch(setStartAction(true));
+			dispatch(cellReducerAction(FROM.Empty));
+		} else {
+			dispatch(cellReducerAction(random));
+			setDraw(true);
+		}
 	};
 
 	useEffect(
